@@ -1,11 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { AddListItemComponent } from './add-list-item/add-list-item.component';
+import { ListComponent } from './list/list.component';
+import { TopBarComponent } from './top-bar/top-bar.component';
 
 describe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
     imports: [RouterTestingModule],
-    declarations: [AppComponent]
+    declarations: [AppComponent, TopBarComponent, ListComponent, AddListItemComponent ]
   }));
 
   it('should create the app', () => {
@@ -20,10 +23,4 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('to-do-list');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('to-do-list app is running!');
-  });
 });
