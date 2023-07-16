@@ -14,6 +14,8 @@ export class ListComponent implements OnDestroy{
   tasksSubscription: Subscription;
 
   constructor(private taskService: TaskService) {
+    this.tasks = taskService.getTasks();
+
     this.tasksSubscription = taskService.tasks$.subscribe(tasks=>{
       this.tasks = tasks;
     });

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Task } from './model/task';
 import { Subject } from 'rxjs';
 
@@ -11,7 +11,15 @@ export class TaskService {
   tasksSource = new Subject <Task[]>;
   tasks$ = this.tasksSource.asObservable();
 
-  constructor() { }
+  constructor() {
+    const tasksFromLocalStorage = localStorage.getItem('tasks');
+
+    if(tasksFromLocalStorage !== null) {
+      this.tasks = JSON.parse(tasksFromLocalStorage);
+    }
+}
+
+
 
   getTasks() {
     return this.tasks;
@@ -19,7 +27,7 @@ export class TaskService {
 
   addTask(task: Task) {
     this.tasks.push(task);
-    this.tasksSource.next(this.tasks);
+    this.updateTasks();
   }
 
   updateTask(index:number,updatedTask: Task) {
@@ -31,12 +39,16 @@ export class TaskService {
       task.title = updatedTask.title;
       task.isCompleted = updatedTask.isCompleted;
     }
-    this.tasksSource.next(this.tasks);
+    this.updateTasks();
   }
 
   deleteTask(index: number) {
     this.tasks.splice(index, 1);
-    this.tasksSource.next(this.tasks);
+    this.updateTasks();
   }
 
+  updateTasks() {
+    this.tasksSource.next(this.tasks);
+    localStorage.setItem('tasks', JSON.stringify(this.tasks));
+  }
 }
