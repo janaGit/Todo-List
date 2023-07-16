@@ -1,3 +1,18 @@
-<app-top-bar></app-top-bar>
-<app-list></app-list>
-<app-add-list-item></app-add-list-item>
+<div class="flex flex-col h-full">
+    <div class="flex">
+        <div class="bg-blue-400 flex-1"></div>
+        <app-top-bar class="bg-blue-500 w-[800px]"></app-top-bar>
+        <div class="bg-blue-400 flex-1"></div>  
+    </div>
+   
+
+    <div class="h-full flex">
+        <div class="md:flex-1 bg-gray-50"></div>
+        <div class="flex-1 md:block md:flex-none md:w-[800px] bg-gray-100 flex flex-col items-center">
+            <app-list class=""></app-list>
+            <app-add-list-item class=""></app-add-list-item>     
+        </div>
+        <div class="md:flex-1 bg-gray-50"></div>
+    </div>
+
+</div>

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddListItemComponent } from './add-list-item.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('AddListItemComponent', () => {
   let component: AddListItemComponent;
@@ -8,6 +9,7 @@ describe('AddListItemComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [ReactiveFormsModule],
       declarations: [AddListItemComponent]
     });
     fixture = TestBed.createComponent(AddListItemComponent);

@@ -1,1 +1,5 @@
-<p>add-list-item works!</p>
+<form [formGroup]="taskForm" (ngSubmit)="addTask()" class="flex space-x-3 p-4">
+      <input type="text" class="border-2 rounded h-10 pl-2"  formControlName="title">
+      <input type="checkbox" class="border-2 rounded w-8 h-8 m-auto"  formControlName="isCompleted">
+      <button type="submit" class="rounded bg-gray-200 disabled:text-gray-300 p-2 w-16" [disabled]="!taskForm.valid">Add</button>
+</form>
