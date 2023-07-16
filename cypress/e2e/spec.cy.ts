@@ -1,6 +1,9 @@
-describe('My First Test', () => {
-  it('Visits the initial project page', () => {
+describe('Update tasks', () => {
+  it('Add a new task', () => {
     cy.visit('/')
-    cy.contains('app is running!')
+    cy.get('#list').children().should('have.length', 0);
+    cy.get('#new-task-title').type('New task');
+    cy.get('#add-task').click();
+    cy.get('#list').children().should('have.length', 1);
   })
 })

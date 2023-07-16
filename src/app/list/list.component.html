@@ -1,7 +1,6 @@
-<div class="">
-    <ul role="list" class="divide-gray-100">
-        <li *ngFor="let task of tasks; let indexOfelement=index;">
-            <app-list-item [task]="task" (updateTask)="updateTask(indexOfelement, $event)" (deleteTask)="deleteTask(indexOfelement)"></app-list-item>
-        </li>
-    </ul>
-</div>
+<ul id="list" class="divide-gray-100">
+    <li *ngFor="let task of tasks; let indexOfelement=index;">
+        <app-list-item [task]="task" (updateTask)="updateTask(indexOfelement, $event)" (deleteTask)="deleteTask(indexOfelement)">
+        </app-list-item>
+    </li>
+</ul>
