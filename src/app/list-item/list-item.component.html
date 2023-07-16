@@ -1,5 +1,7 @@
-<form [formGroup]="taskForm" class="flex space-x-3 p-4">
+<form [@newTask]="task.isNew? 'new': 'old'" (@newTask.done)="onFinishAnimation()" 
+[formGroup]="taskForm" class="flex space-x-3 p-4">
     <input type="text" class="border-2 rounded h-10 pl-2"  formControlName="title">
     <input type="checkbox" class="border-2 rounded  w-8 h-8 m-auto"  formControlName="isCompleted">
+    <input type="checkbox" class="hidden"  formControlName="isNew">
     <button class="rounded bg-gray-200 p-2 w-16" (click)="onClickDelete()">Delete</button>
 </form>

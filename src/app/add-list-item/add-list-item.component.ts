@@ -11,7 +11,8 @@ import { TaskService } from '../task.service';
 export class AddListItemComponent {
   taskForm = this.fb.group({
     title: ['', Validators.required],
-    isCompleted : false
+    isCompleted : false,
+    isNew: true
   });
 
   constructor(private taskService: TaskService,private fb: FormBuilder) { }
@@ -19,9 +20,9 @@ export class AddListItemComponent {
   addTask() {
      const task = this.taskForm.value;
 
-    if(typeof task.title === 'string'  && typeof  task.isCompleted === 'boolean'){
-      this.taskService.addTask(task as Task);
+    if(typeof task.title === 'string'  && typeof  task.isCompleted === 'boolean' && typeof  task.isNew === 'boolean'){
+      this.taskService.addTask({title: task.title, isCompleted: task.isCompleted, isNew: task.isNew});
     }
-    this.taskForm.setValue({title:'', isCompleted:false});
+    this.taskForm.setValue({title:'', isCompleted:false, isNew: true});
   }
 }
